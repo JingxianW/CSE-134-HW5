@@ -8,6 +8,11 @@ const output = document.querySelector('#response');
 
 
 postBtn.addEventListener('click', () => {
+    if (!form.elements['id'].value || !form.elements['article_body'].value || !form.elements['article_body'].value || !form.elements['date'].value) {
+        alert('There are empty fields!');
+        return;
+    }
+
     const xhr = new XMLHttpRequest();
 
     xhr.open('POST', 'https://httpbin.org/post');
@@ -17,8 +22,7 @@ postBtn.addEventListener('click', () => {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 const response = JSON.parse(this.responseText);
-
-                output.textContent = JSON.stringify(response);
+                output.querySelector('#format_response').textContent = JSON.stringify(response, null, 4);
             } 
             else {
                 output.textContent = 'Error: ' + this.statusText;
@@ -33,8 +37,11 @@ postBtn.addEventListener('click', () => {
 });
 
 
-
 getBtn.addEventListener('click', () => {
+    if (!form.elements['id'].value || !form.elements['article_body'].value || !form.elements['article_body'].value || !form.elements['date'].value) {
+        alert('There are empty fields!');
+        return;
+    }
   
     let url = 'https://httpbin.org/get?';
     if (form.elements['id'].value) {
@@ -58,7 +65,7 @@ getBtn.addEventListener('click', () => {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 const response = JSON.parse(this.responseText);
-                output.textContent = JSON.stringify(response);
+                output.querySelector('#format_response').textContent = JSON.stringify(response, null, 4);
             } 
             else {
                 output.textContent = 'Error: ' + this.statusText;
@@ -71,6 +78,10 @@ getBtn.addEventListener('click', () => {
 
 
 putBtn.addEventListener('click', () => {
+    if (!form.elements['id'].value || !form.elements['article_body'].value || !form.elements['article_body'].value || !form.elements['date'].value) {
+        alert('There are empty fields!');
+        return;
+    }
 
     const xhr = new XMLHttpRequest();
 
@@ -81,7 +92,7 @@ putBtn.addEventListener('click', () => {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 const response = JSON.parse(this.responseText);
-                output.textContent = JSON.stringify(response);
+                output.querySelector('#format_response').textContent = JSON.stringify(response, null, 4);
             } 
             else {
                 output.textContent = 'Error: ' + this.statusText;
@@ -96,21 +107,26 @@ putBtn.addEventListener('click', () => {
 });
 
 deleteBtn.addEventListener('click', () => {
-  const xhr = new XMLHttpRequest();
+    if (!form.elements['id'].value || !form.elements['article_body'].value || !form.elements['article_body'].value || !form.elements['date'].value) {
+        alert('There are empty fields!');
+        return;
+    }
 
-  xhr.open('DELETE', `https://httpbin.org/delete`);
+    const xhr = new XMLHttpRequest();
 
-  xhr.onreadystatechange = function() {
+    xhr.open('DELETE', `https://httpbin.org/delete`);
+
+    xhr.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
             const response = JSON.parse(this.responseText);
-            output.textContent = JSON.stringify(response);
+            output.querySelector('#format_response').textContent = JSON.stringify(response, null, 4);
         } 
         else {
             output.textContent = 'Error: ' + this.statusText;
         }  
     }
-  };
-  
-  xhr.send();
+    };
+
+    xhr.send();
 });
