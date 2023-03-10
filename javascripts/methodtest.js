@@ -43,25 +43,11 @@ getBtn.addEventListener('click', () => {
         return;
     }
   
-    let url = 'https://httpbin.org/get?';
-    if (form.elements['id'].value) {
-        url += `id=${form.elements['id'].value}&`;
-    } 
-    if (form.elements['article_name'].value) {
-        url += `article_name=${form.elements['article_name'].value}&`;
-    } 
-    if (form.elements['article_body'].value) {
-        url += `article_body=${form.elements['article_body'].value}&`;
-    }
-    if (form.elements['date'].value) {
-        url += `date=${form.elements['date'].value}`;
-    }
-  
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', url);
+    xhr.open('GET', 'https://httpbin.org/get?' + `id=${form.elements['id'].value}&` + `article_name=${form.elements['article_name'].value}&` + `article_body=${form.elements['article_body'].value}&` +  `date=${form.elements['date'].value}`);
 
-    xhr.onload = function() {
+    xhr.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 const response = JSON.parse(this.responseText);
