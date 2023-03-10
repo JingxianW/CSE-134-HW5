@@ -7,7 +7,8 @@
     <meta name="description" content="About Me page of my personal website">
     <meta name="author" content="Jingxian Wang">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../styles/aboutMe.css" media="screen"> -->
+
+    <link rel="stylesheet" href="../styles/methodtest.css" media="screen">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
         <br><br>
         
         <label for="article_name">Article Name:</label>
-        <input type="text" id="article_name" name="article_name">
+        <input type="text" id="article_name" name="article_name" autocomplete="off">
 
         <br><br>
         
@@ -35,26 +36,30 @@
 
         <br><br>
         
-        <label for="date">Date:</label>
-        <input type="text" id="date" name="date" readonl>
+        <label for="date">Date display is hidden</label>
+        <input type="text" id="date" name="date" readonly hidden>
     </form>
-
-    <button id="postBtn">POST</button>
-    <button id="getBtn">GET</button>
-    <button id="putBtn">PUT</button>
-    <button id="deleteBtn">DELETE</button>
 
     <br>
 
-    <output id="response"></output>
+    <div id="buttons">
+        <button id="postBtn">POST</button>
+        <button id="getBtn">GET</button>
+        <button id="putBtn">PUT</button>
+        <button id="deleteBtn">DELETE</button>
+    </div>
+
+    <br><br>
+
+    <output id="response">
+        <textarea name="" id="format_response" cols="30" rows="10"></textarea>
+    </output>
 
     <script>
         document.getElementById('date').value = new Date();
     </script>
       
     <script src="../javascripts/methodtest.js"></script>
-
-    
 
     <footer>
         <p class="footer"> &copy; Jingxian Wang </p>
