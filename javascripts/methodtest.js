@@ -78,6 +78,7 @@ putBtn.addEventListener('click', () => {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 const response = JSON.parse(this.responseText);
+
                 output.querySelector('#format_response').textContent = JSON.stringify(response, null, 4);
             } 
             else {
